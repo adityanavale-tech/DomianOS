@@ -1,8 +1,7 @@
-// Make the DIV element draggable:
-dragElement(document.getElementById("welcomewindow"));
-//dragElement(document.getElementById("todoappheader"));
-dragElement(document.getElementById("todoappicon"));
-
+document.addEventListener("DOMContentLoaded", function () {
+  dragElement(document.getElementById("welcomewindow"));
+  dragElement(document.getElementById("todoappWindow"));
+});
 // Step 1: Define a function called `dragElement` that makes an HTML element draggable.
 function dragElement(element) {
   if(!element) return;
@@ -58,7 +57,6 @@ function dragElement(element) {
 var welcomeScreen = document.querySelector("#welcomewindow");
 var welcomeScreenClose = document.querySelector("#welcomeclose");
 var welcomeScreenOpen = document.querySelector("#welcomeopen");
-
 // Safety checks (prevents whole script breaking)
 
 welcomeScreenClose.addEventListener("click", function () {
