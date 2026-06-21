@@ -1,8 +1,11 @@
 // Make the DIV element draggable:
 dragElement(document.getElementById("welcomewindow"));
+//dragElement(document.getElementById("todoappheader"));
+dragElement(document.getElementById("todoappicon"));
 
 // Step 1: Define a function called `dragElement` that makes an HTML element draggable.
 function dragElement(element) {
+  if(!element) return;
   // Step 2: Set up variables to keep track of the element's position.
   var initialX = 0;
   var initialY = 0;
@@ -52,23 +55,60 @@ function dragElement(element) {
     document.onmousemove = null;
   }
 }
+var welcomeScreen = document.querySelector("#welcomewindow");
+var welcomeScreenClose = document.querySelector("#welcomeclose");
+var welcomeScreenOpen = document.querySelector("#welcomeopen");
 
-//window closing and opening
-var welcomeScreen = document.querySelector("#welcomewindow")
-var welcomeScreenClose = document.querySelector("#welcomeclose")
+// Safety checks (prevents whole script breaking)
 
-var welcomeScreenOpen = document.querySelector("#welcomeopen")
+welcomeScreenClose.addEventListener("click", function () {
+    welcomeScreen.style.display = "none";
+  });
 
-welcomeScreenClose.addEventListener("click", function() {
-  closeWindow(welcomeScreen);
-});
+  welcomeScreenOpen.addEventListener("click", function () {
+    welcomeScreen.style.display = "block";
+  });
+//icons + app
 
-welcomeScreenOpen.addEventListener("click", function() {
-  openWindow(welcomeScreen);
-});
-function closeWindow(element){
-    element.style.display = "none"
-}
+var selectedIcon = undefined
+var todoappScreen = document.querySelector("#todoappWindow");
+var todoappIcon = document.querySelector("#todoappicon");
+var todoappClose = document.querySelector("#todoappclose");
+
 function openWindow(element){
-    element.style.display = "block"
+  element.style.display = "block";
+  welcomeScreen.style.display = "none";
 }
+
+function closeWindow(element){
+  element.style.display = "none";
+}
+
+function selectIcon(element){
+  element.classList.add("selected");
+
+  selectedIcon = element
+}
+
+function deselectIcon(element){
+  element.classList.remove("selected");
+
+  selectedIcon = undefined
+}
+
+function handleIconTap(element){
+  if(element.classList.contains("selected")){
+    deselectIcon(element)
+    openWindow(todoappScreen)
+  } else {
+    selectIcon(element)
+  }
+}
+
+todoappIcon.addEventListener("click", function () {
+  handleIconTap(todoappIcon);
+});
+
+todoappClose.addEventListener("click", function () {
+  closeWindow(todoappScreen);
+});
