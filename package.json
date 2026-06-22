@@ -2,7 +2,7 @@
   "name": "domain-os-new",
   "private": true,
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "api/index.js",
   "type": "module",
   "scripts": {
     "dev": "vite",
