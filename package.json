@@ -2,6 +2,7 @@
   "name": "domain-os-new",
   "private": true,
   "version": "0.0.0",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -15,7 +16,8 @@
     "lucide-react": "^1.21.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.18.0"
+    "react-router-dom": "^7.18.0",
+    "express": "^4.19.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
