@@ -110,3 +110,46 @@ todoappIcon.addEventListener("click", function () {
 todoappClose.addEventListener("click", function () {
   closeWindow(todoappScreen);
 });
+
+//app content
+var content = [
+    {
+      title: "Welcome to To-Do",
+      content: `
+              <p style="top 70px;left: 200px;background-color: rgba(100, 100, 100, 0.5);padding 5px;font: large;">Projects</p>
+              <p>
+                I hope you get your to do things done
+                Idk how to add check boxes - will come soon dw
+                </p>
+      `
+    }
+]
+
+function setToDoContent(index){
+  var todoContent = document.querySelector("#todoappContent")
+
+  todoContent.innerHTML = content[index].content
+}
+setToDoContent(0)
+
+function addToSideBar(index){
+  var sideBar = document.querySelector("#sideBar");
+  var task = content[index];
+  var newDiv = document.createElement("div");
+
+  newDiv.innerHTML = `
+    <p style="margin: 0px;">
+      ${task.title}
+    </p>
+  `;
+
+  newDiv.addEventListener("click", function(){
+    setToDoContent(index);
+  });
+
+  sideBar.appendChild(newDiv);
+}
+
+for (let i = 0; i < content.length; i++) {
+  addToSideBar(i)
+}
